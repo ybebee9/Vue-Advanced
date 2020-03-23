@@ -2,7 +2,7 @@ import {fetchAskList, fetchItemInfo, fetchJobsList, fetchList, fetchNewsList, fe
 
 export default {
     FETCH_NEWS({commit}) {
-        fetchNewsList()
+        return fetchNewsList()
             .then(response => {
                 commit('SET_NEWS', response.data);
                 return response;
@@ -10,35 +10,35 @@ export default {
             .catch(error => console.log(error));
     },
     FETCH_JOBS({commit}) {
-        fetchJobsList()
+        return fetchJobsList()
             .then(({data}) => {
                 commit('SET_JOBS', data);
             })
             .catch(error => console.log(error));
     },
     FETCH_ASK({commit}){
-        fetchAskList()
+        return fetchAskList()
             .then(({data}) => {
                 commit('SET_ASK', data);
             })
             .catch(error => console.log(error));
     },
     FETCH_USER({commit}, name){
-        fetchUserInfo(name)
+        return fetchUserInfo(name)
             .then(({data}) => {
                 commit('SET_USER', data);
             })
             .catch(error => console.log(error));
     },
     FETCH_ITEM({commit}, itemId){
-        fetchItemInfo(itemId)
+        return fetchItemInfo(itemId)
             .then(({data}) => {
                 commit('SET_ITEM',data);
             })
             .catch(error => console.log(error));
     },
     FETCH_LIST({commit}, pageName){
-        fetchList(pageName)
+        return fetchList(pageName)
             .then(({data}) => commit('SET_LIST',data))
             .catch(error => console.log(error));
     }
